@@ -1,0 +1,23 @@
+.department {
+  box-sizing: border-box;
+  padding: var(--content-padding);
+  margin: 0;
+  border: 4px solid #41bdf7;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  color: #333;
+  line-height: 1.6;
+  text-align: left;
+}
+
+h3 {
+  font-size: 1.5em;
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+  align-items: left;
+  display: flex;
+  justify-content: flex-start;
+}

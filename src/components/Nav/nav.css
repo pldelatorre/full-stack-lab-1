@@ -1,0 +1,15 @@
+.page-links {
+  display: flex;
+  border-style: double;
+  border: 4px solid #41bdf7;
+  gap: 10rem;
+  justify-content: flex-start;
+  margin-bottom: 2rem;
+}
+
+.user-management-button {
+  display: flex;
+  gap: 5rem;
+  justify-content: flex-end;
+  margin-bottom: 2rem;
+}

@@ -1,9 +1,9 @@
-import './body.css';
-import employees from "../../assets/employees.json"; // import JSON
+import './employees.css';
+import employees from "../../../assets/employees.json"; // import JSON
 
-function Body() {
+export default function Employees() {
   return (
-    <div className="body">
+    <div className="employees">
       {Object.entries(employees).map(([department, names]) => (
         <div key={department}>
           <h3>{department}</h3>
@@ -15,7 +15,5 @@ function Body() {
         </div>
       ))}
     </div>
-  );
+  )
 }
-
-export default Body;

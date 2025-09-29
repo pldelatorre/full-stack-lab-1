@@ -1,0 +1,20 @@
+.org-list {
+  width: 24rem;       
+  margin: 1.5rem auto; 
+}
+
+.org-item {
+  border-bottom: 1px solid #d1d5db; 
+  padding: 0.5rem 0;                
+  cursor: pointer;
+}
+
+.org-title {
+  font-weight: 600; 
+  font-size: 1.125rem; 
+}
+
+.org-name {
+  color: #b5cdf5;  
+  margin-top: 0.25rem; 
+}

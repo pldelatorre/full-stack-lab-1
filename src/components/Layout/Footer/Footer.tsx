@@ -2,7 +2,7 @@ import './footer.css';
 
 const currentYear: number = new Date().getFullYear();
 
-function Footer() {
+export default function Footer() {
     return (
         <footer className='footer'>
             Copyright Pixel River Financial year {currentYear}
@@ -10,4 +10,4 @@ function Footer() {
     )
 }
 
-export default Footer;
+

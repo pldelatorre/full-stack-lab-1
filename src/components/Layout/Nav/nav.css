@@ -2,8 +2,9 @@
   display: flex;
   border-style: double;
   border: 4px solid #41bdf7;
-  gap: 10rem;
-  justify-content: center;
+  gap: 10px;
+  justify-content: space-around;
+  align-items: center;
   margin-bottom: 2rem;
 }
 

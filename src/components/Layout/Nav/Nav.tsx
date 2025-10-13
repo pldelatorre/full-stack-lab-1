@@ -11,8 +11,14 @@ export default function Nav() {
                 <Link to="/organization">
                     <li>Organization</li>
                 </Link>
+                <Link to="roles/create">
+                    <li>Add New Roles</li>
+                </Link>
                 <Link to="/employees">
                     <li>Employees</li>
+                </Link>
+                <Link to="employees/create">
+                    <li>Add New Employee</li>
                 </Link>
             </ul>
             <button className="user-management-button">Log In</button>

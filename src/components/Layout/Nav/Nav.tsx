@@ -5,8 +5,10 @@ import { Link } from 'react-router';
 export default function Nav() {
     return (
         <nav>
-            <img src={logo} alt="Pixell River Financial Logo" className='logo' />
-            <h1>Pixell River Financial Organizational Structure</h1>
+            <Link to="/">
+                <img src={logo} alt="Pixell River Financial Logo" className='logo' />
+                <h1>Pixell River Financial Organizational Structure</h1>
+            </Link>
             <ul className="page-links">
                 <Link to="/organization">
                     <li>Organization</li>

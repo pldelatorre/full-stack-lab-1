@@ -1,6 +1,3 @@
-
-
-
 function Homepage() {
     return (
         <>

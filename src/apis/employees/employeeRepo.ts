@@ -1,43 +1,70 @@
-import type { Employees } from '../../components/interface/employees';
-import { Department } from '../../components/interface/department';
-import employeeData from '../../assets/employees.json';
+import type { Employee } from '../../components/interface/employees';
+import type { BaseResponse } from '../../components/interface/BaseResponse';
 
-let employees: Employees[] = Object.entries(employeeData).map(([department, members]) => ({
-  department: department as Department,
-  name: members as string[],
-}));
+const BASE_URL = `${import.meta.env.VITE_API_BASE_URL}/api/v1`;
 
-export function getAllEmployees(): Employees[] {
-  return employees;
+export async function getAllEmployees() {
+  const employeeResponse: Response = await fetch(`${BASE_URL}/employees`);
+
+  if (!employeeResponse.ok) {
+    throw new Error("Failed to fetch employees");
+  }
+
+  const json: BaseResponse<Employee[]> = await employeeResponse.json();
+  return json.data;
 }
 
-export function getEmployeesByName(name: string): Employees | undefined {
-  const employee = employees.find((e) => e.name.includes(name));
-  if (!employee) {
-    throw new Error(`Employee with name ${name} was not found`);
-    }
-  return employee;
+export async function getEmployeeById(id: string): Promise<Employee[]> {
+  const employeeResponse: Response = await fetch(`${BASE_URL}/employees/${id}`);
+
+  if (!employeeResponse.ok) {
+    throw new Error(`Failed to fetch employee with id ${id}`);
+  }
+
+  const json: BaseResponse<Employee[]> = await employeeResponse.json();
+  return json.data;
 }
 
-export async function createEmployee(employee: Employees) {
-    employees.push(employee);
-    return employee;
+export async function createEmployee(employee: Employee) {
+  const createResponse: Response = await fetch(`${BASE_URL}/employees/create`, {
+    method: "POST",
+    body: JSON.stringify({ ...employee }),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  if (!createResponse.ok) {
+    throw new Error(`Failed to create employee`);
+  }
+
+  const json: BaseResponse<Employee[]> = await createResponse.json();
+  return json.data;
 }
 
-export async function updateEmployee(updatedEmployee: Employees) {
-    const index = employees.findIndex((e) => e.name === updatedEmployee.name);
-    if (index === -1) {
-        throw new Error(`Employee with name ${updatedEmployee.name} was not found`);
-    }
-    employees[index] = updatedEmployee;
-    return updatedEmployee;
+export async function updateEmployee(employee: Employee): Promise<Employee[]> {
+    const updateResponse: Response = await fetch(`${BASE_URL}/employees/update/${employee.id}`, {
+    method: "PUT",
+    body: JSON.stringify({ ...employee }),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  if (!updateResponse.ok) {
+    throw new Error(`Failed to update employee with id ${employee.id}`);
+  }
+
+  const json: BaseResponse<Employee[]> = await updateResponse.json();
+  return json.data;
 }
 
-export async function deleteEmployee(name: string) {
-    const index = employees.findIndex((e) => e.name.includes(name));
-    if (index === -1) {
-        throw new Error(`Employee with name ${name} was not found`);
-    }
-    employees.splice(index, 1);
-    return { message: `Employee with name ${name} was deleted` };
+export async function deleteEmployee(id: string): Promise<void> {
+    const employeeResponse: Response = await fetch(`${BASE_URL}/employees/delete/${id}`, {
+    method: "DELETE",
+  });
+
+  if (!employeeResponse.ok) {
+    throw new Error(`Failed to delete employee with id ${id}`);
+  }
 }

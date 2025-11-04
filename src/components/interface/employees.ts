@@ -1,6 +1,7 @@
 import { Department } from "./department"
 
-export interface Employees {
+export interface Employee {
     department: Department,
-    name:string[]
+    name:string[],
+    id?: string
 }

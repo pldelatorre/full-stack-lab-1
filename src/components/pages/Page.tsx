@@ -1,7 +1,3 @@
-import Nav from "../Layout/Nav/Nav";
-import Footer from "../Layout/Footer/Footer";
-
-
 function Homepage() {
     return (
         <>
